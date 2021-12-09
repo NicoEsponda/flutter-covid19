@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:flutter_covid19/controllers/lista_controller.dart';
 import 'package:flutter_covid19/main.dart';
 import 'package:flutter_covid19/models/info_covid.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class ListaPaisesPage extends StatelessWidget {
   const ListaPaisesPage({
@@ -76,7 +77,10 @@ class _DisenoListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network('https://flagcdn.com/w80/${pais.countryCode.toLowerCase()}.png'),
+      leading: FadeInImage.memoryNetwork(
+          placeholder: kTransparentImage,
+          image:
+              'https://flagcdn.com/w80/${pais.countryCode.toLowerCase()}.png'),
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
         child: Column(
@@ -93,7 +97,7 @@ class _DisenoListTile extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () => Get.toNamed('/pais', arguments: pais),
+      onTap: () => Get.toNamed('/pais', arguments:pais ),
     );
   }
 }
@@ -107,7 +111,7 @@ class _CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset('assets/covid.jpg', fit: BoxFit.fitHeight),
+        background: Image.asset('assets/covid.jpg', fit: BoxFit.fill),
         centerTitle: true,
         title: Text(
           'Lista Paises',
@@ -118,7 +122,8 @@ class _CustomAppBar extends StatelessWidget {
       centerTitle: true,
       floating: true,
       pinned: true,
-      expandedHeight: 220,
+      
+      expandedHeight: 200,
       elevation: 0,
       shape: RoundedRectangleBorder(),
     );

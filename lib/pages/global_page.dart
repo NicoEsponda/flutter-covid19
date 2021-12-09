@@ -40,79 +40,81 @@ class _InfoMundial extends StatelessWidget {
     print(info.global);
     return Scaffold(
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 140),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Text(
-                'Mundial',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-              ),
-              const Text('\nTotal\n',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Text('Confirmados'),
-                  Text('Muertos'),
-                  Text('Recuperados'),
-                ],
-              ),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset('assets/mundo.jpg'),
+            const SizedBox(height: 60),
+            const Text(
+              'Mundial',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+            ),
+            const Text('\nTotal\n',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text('Confirmados'),
+                Text('Muertos'),
+                Text('Recuperados'),
+              ],
+            ),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right:0),
+                    child: Text(
                       info.global.totalConfirmed.toString(),
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20),
                     ),
-                    Text(
-                      info.global.totalDeaths.toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                    Text(
-                      info.global.totalRecovered.toString(),
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ],
+                  ),
+                  Text(
+                    info.global.totalDeaths.toString(),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    info.global.totalRecovered.toString(),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            const Text('\n\nNuevos\n',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text('Confirmados'),
+                Text('Muertos'),
+                Text('Recuperados'),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  info.global.newConfirmed.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
                 ),
-              ),
-              const Text('\n\nNuevos\n',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  Text('Confirmados'),
-                  Text('Muertos'),
-                  Text('Recuperados'),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    info.global.newConfirmed.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    info.global.newDeaths.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    info.global.newRecovered.toString(),
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                Text(
+                  info.global.newDeaths.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                Text(
+                  info.global.newRecovered.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

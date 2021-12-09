@@ -40,4 +40,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const primaryColor = Color(0xFF2ABDC2);
+const primaryColor = Color(0xFF16B1B1);

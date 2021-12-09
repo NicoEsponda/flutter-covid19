@@ -38,6 +38,7 @@ dependencies:
   dio: ^4.0.4
   http: ^0.13.4
   animate_do: ^2.0.0
+  transparent_image: ^2.0.0
   
 dev_dependencies:
   flutter_test:
