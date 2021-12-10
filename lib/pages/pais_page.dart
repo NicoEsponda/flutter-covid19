@@ -31,11 +31,14 @@ class PaisPage extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 30),
                   Text(
                     _.pais.country,
                     style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 40),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                   Text(
                     _.pais.countryCode,
@@ -59,11 +62,13 @@ class PaisPage extends StatelessWidget {
                         _.pais.totalConfirmed.toString(),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
+                        textAlign: TextAlign.left,
                       ),
                       Text(
                         _.pais.totalDeaths.toString(),
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
+                        textAlign: TextAlign.left,
                       ),
                       Text(
                         _.pais.totalRecovered.toString(),

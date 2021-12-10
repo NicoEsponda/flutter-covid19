@@ -7,7 +7,7 @@ import 'package:flutter_covid19/pages/home_page.dart';
 import 'package:flutter_covid19/pages/lista_paises.dart';
 import 'package:flutter_covid19/pages/pais_page.dart';
 
-void main(List<String> arguments) {
+void main() {
   runApp(const MyApp());
 
   // Dio dio = Dio();

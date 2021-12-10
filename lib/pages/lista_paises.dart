@@ -27,8 +27,13 @@ class ListaPaisesPage extends StatelessWidget {
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      final Country pais = _.paises[index];
+                      final List<Country> p = _.paises;
+                      final Country pais = p[index];
                       var numero = index + 1;
+                 
+                      p.sort((a, b) =>
+                          b.totalConfirmed.compareTo(a.totalConfirmed));
+
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 5, vertical: 10),

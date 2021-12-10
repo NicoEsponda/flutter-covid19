@@ -16,16 +16,6 @@ class ListaController extends GetxController {
     loadPaises();
   }
 
-  Future<void> fetchData() async {
-    isLoading = true;
-    update(); // triggers the GetBuilder rebuild
-    await Future.delayed(
-      const Duration(seconds: 2),
-      () => dato = 'Data Loaded',
-    );
-    isLoading = false;
-    update();
-  }
 
   Future<void> loadPaises() async {
     final data = await CovidApi.instance.getPaises();
