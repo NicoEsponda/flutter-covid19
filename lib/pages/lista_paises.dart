@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 import 'package:flutter_covid19/controllers/lista_controller.dart';
 import 'package:flutter_covid19/main.dart';
 import 'package:flutter_covid19/models/info_covid.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:octo_image/octo_image.dart';
+import 'package:animate_do/animate_do.dart';
 
 class ListaPaisesPage extends StatelessWidget {
   const ListaPaisesPage({
@@ -31,24 +32,26 @@ class ListaPaisesPage extends StatelessWidget {
                       return Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 5, vertical: 10),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFFDDDBDB),
-                                    Color(0xFFC9D7D7),
-                                  ],
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black45,
-                                  blurRadius: 4,
-                                  offset: Offset(0, 5),
-                                )
-                              ]),
-                          child: _DisenoListTile(numero: numero, pais: pais),
+                        child: FadeInLeft(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFFDDDBDB),
+                                      Color(0xFFC9D7D7),
+                                    ],
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.black45,
+                                    blurRadius: 4,
+                                    offset: Offset(0, 5),
+                                  )
+                                ]),
+                            child: _DisenoListTile(numero: numero, pais: pais),
+                          ),
                         ),
                       );
                     },
@@ -77,10 +80,18 @@ class _DisenoListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: FadeInImage.memoryNetwork(
-          placeholder: kTransparentImage,
-          image:
+      leading: AspectRatio(
+        aspectRatio: 269 / 173,
+        child: OctoImage(
+          image: NetworkImage(
               'https://flagcdn.com/w80/${pais.countryCode.toLowerCase()}.png'),
+          placeholderBuilder: OctoPlaceholder.blurHash(
+            'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+          ),
+          errorBuilder: OctoError.icon(color: Colors.red),
+          fit: BoxFit.cover,
+        ),
+      ),
       title: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
         child: Column(
@@ -97,7 +108,7 @@ class _DisenoListTile extends StatelessWidget {
           ],
         ),
       ),
-      onTap: () => Get.toNamed('/pais', arguments:pais ),
+      onTap: () => Get.toNamed('/pais', arguments: pais),
     );
   }
 }
@@ -111,7 +122,7 @@ class _CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset('assets/covid.jpg', fit: BoxFit.fill),
+        background: Image.asset('assets/covid.jpg', fit: BoxFit.cover),
         centerTitle: true,
         title: Text(
           'Lista Paises',
@@ -122,8 +133,7 @@ class _CustomAppBar extends StatelessWidget {
       centerTitle: true,
       floating: true,
       pinned: true,
-      
-      expandedHeight: 200,
+      expandedHeight: 150,
       elevation: 0,
       shape: RoundedRectangleBorder(),
     );

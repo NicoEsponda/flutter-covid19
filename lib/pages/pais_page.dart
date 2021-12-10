@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:flutter_covid19/controllers/pais_controller.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:octo_image/octo_image.dart';
 
 class PaisPage extends StatelessWidget {
   const PaisPage({Key? key}) : super(key: key);
@@ -19,10 +19,17 @@ class PaisPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  FadeInImage.memoryNetwork(
-                    placeholder: kTransparentImage,
-                    image:
-                        'https://flagcdn.com/w640/${_.pais.countryCode.toLowerCase()}.jpg',
+                  AspectRatio(
+                    aspectRatio: 269 / 173,
+                    child: OctoImage(
+                      image: NetworkImage(
+                          'https://flagcdn.com/w640/${_.pais.countryCode.toLowerCase()}.jpg'),
+                      placeholderBuilder: OctoPlaceholder.blurHash(
+                        'LEHV6nWB2yk8pyo0adR*.7kCMdnj',
+                      ),
+                      errorBuilder: OctoError.icon(color: Colors.red),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   const SizedBox(height: 60),
                   Text(

@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       getPages: [
         GetPage(name: '/', page: () => const HomePage()),
-        GetPage(name: '/listaPaises', page: () => const ListaPaisesPage()),
+        GetPage(name: '/listaPaises', page: () =>const ListaPaisesPage()),
         GetPage(name: '/infoGlobal', page: () => const InfoGlobalPage()),
         GetPage(name: '/pais', page: () => const PaisPage())
       ],
@@ -40,4 +40,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const primaryColor = Color(0xFF16B1B1);
+const primaryColor = Color(0xFF8E5E54);
